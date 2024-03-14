@@ -18,15 +18,17 @@ public class Uploaddocuments {
 
 	}
 
+	@SuppressWarnings("deprecation")
 	public void Fileupload() throws InterruptedException, Exception {
+		Thread.sleep(10000);
 
 		By Element = By.xpath("//h4[@class='fw-normal blue pb-2']");
 		WebDriverWait hold = new WebDriverWait(driver, Duration.ofMinutes(3));
 		WebElement canc = hold.until(ExpectedConditions.elementToBeClickable(Element));
 		canc.click();
-		Runtime.getRuntime().exec("\"C:\\Users\\jeevitha.patnana\\Downloads\\EsignTest-main\\EsignTest-main\\src\\test\\resources\\upload.exe\"");
+		Runtime.getRuntime().exec("\"C:\\Users\\jeevitha.patnana\\OneDrive - Nimble Accounting\\Desktop\\WFour.exe\"");
 		Thread.sleep(10000);
-		driver.findElement(By.xpath("//button[@class='el-button text-center upload-btn el-button--danger']")).click();
+		driver.findElement(By.xpath("//span[normalize-space()='Next']")).click();
 
 	}
 

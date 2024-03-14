@@ -6,7 +6,7 @@
       <class name="TestCase.LoginPageTest">
         <methods>
           <include name="intilize"/>
-          <include name="ContactsModule"/>
+          <include name="emailtemplates"/>
         </methods>
       </class> <!-- TestCase.LoginPageTest -->
     </classes>

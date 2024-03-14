@@ -20,11 +20,12 @@ public class Login {
 	}
 
 	public void Signin() throws InterruptedException {
+		Thread.sleep(10000);
 		driver.findElement(By.xpath("//input[@placeholder='Ex: johnwesley@abc.com']"))
 				.sendKeys("jeevithapatnana06@gmail.com");
 		driver.findElement(By.xpath("//input[@placeholder='Enter Password']")).sendKeys("Nimble#2023");
 		driver.findElement(By.xpath("//span[normalize-space()='Log In']")).click();
-	
+	    Thread.sleep(10000);
 
 	}
 
