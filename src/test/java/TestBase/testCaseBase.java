@@ -12,7 +12,8 @@ public class testCaseBase {
 		//driver = new FirefoxDriver();
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("https://dev.esigns.io/?type=all-documents");
+		driver.get("https://nsui.esigns.io/?type=all-documents");
+		//driver.get("https://preprod.esigns.io/?type=all-documents");
 
 	}
 }

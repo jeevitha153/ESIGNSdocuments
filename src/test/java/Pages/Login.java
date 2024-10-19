@@ -1,7 +1,5 @@
 package Pages;
 
-import static org.testng.Assert.assertTrue;
-
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -9,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 public class Login {
 	WebDriver driver;
@@ -19,22 +18,47 @@ public class Login {
 
 	}
 
+	public void waitEle(By by) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
+		wait.until(ExpectedConditions.elementToBeClickable(by)).click();
+	}
+
 	public void Signin() throws InterruptedException {
 		driver.findElement(By.xpath("//input[@placeholder='Ex: johnwesley@abc.com']"))
 				.sendKeys("jeevithapatnana06@gmail.com");
 		driver.findElement(By.xpath("//input[@placeholder='Enter Password']")).sendKeys("Nimble#2023");
-		driver.findElement(By.xpath("//span[normalize-space()='Log In']")).click();
+		waitEle(By.xpath("//span[normalize-space()='Log In']"));
+		Thread.sleep(10000);
+
+	}
+	public void SigninNSUI(String Email,String Password) throws InterruptedException {
+		
+		driver.findElement(By.xpath("//input[@placeholder='Ex: johnwesley@abc.com']"))
+				.sendKeys(Email);
+		driver.findElement(By.xpath("//input[@placeholder='Enter Password']")).sendKeys(Password);
+		waitEle(By.xpath("//span[text()=\"Log In\"]"));
+		Thread.sleep(10000);
+
+	}
+public void SigninNSUIMeghana() throws InterruptedException {
+		
+		driver.findElement(By.xpath("//input[@placeholder='Ex: johnwesley@abc.com']"))
+				.sendKeys("pmmeghana200@outlook.com");
+		driver.findElement(By.xpath("//input[@placeholder='Enter Password']")).sendKeys("Meghana@123");
+		waitEle(By.xpath("//span[text()=\"Log In\"]"));
+		Thread.sleep(10000);
+
+	}
 	
 
-	}
+	public void VerifyLoginSucess() {
 
-	public boolean VerifyLoginSucess() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(3));
-
-		WebElement name = wait.until(
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2));
+		WebElement welcomeMessage = wait.until(
 				ExpectedConditions.presenceOfElementLocated(By.xpath("//h2[@class='fw-large blue-dark mb-3 fs-10']")));
-		System.out.println("Login Sucessfull");
-		return name.isDisplayed();
 
+		Assert.assertNotNull(welcomeMessage, "Welcome message element is not present Login Failed");
+		System.out.println("Login Successful");
 	}
+
 }
